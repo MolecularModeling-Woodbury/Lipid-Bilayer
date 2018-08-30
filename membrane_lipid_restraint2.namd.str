@@ -23,7 +23,7 @@ read coor unit 10 card
 
 !prnlev 0
 
-!system "mkdir -p namd/restraints"
+system "mkdir -p namd/restraints"
 open write card unit 10 name namd/restraints/dihe.txt
 
 calc NLipid = @nliptop + @nlipbot
