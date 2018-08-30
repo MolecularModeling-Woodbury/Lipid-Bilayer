@@ -5,10 +5,11 @@
 
 
 #Alter these paths to the directories where your topology and pdb/psf files are at.
-set var3 {C:\Users\Robert\Desktop\namd15\DiheTest\toppar}
-set var45 {C:\Users\Robert\Desktop\namd15\DiheTest\0.15MKCl87LipidSystem\step5_assembly}
-set var46 {C:\Users\Robert\Desktop\namd15\DiheTest\2MKCl90LipidSystem\step5_assembly}
+set var3 {C:\Users\robert04\Box\7-3_PE-PC\namd15\merged\DiheTest\toppar}
+set var45 {C:\Users\robert04\Box\7-3_PE-PC\namd15\merged\DiheTest\merged}
+set var46 {C:\Users\robert04\Box\7-3_PE-PC\namd15\merged\DiheTest\merged}
 
+puts "is this where the error is?"
 #Do not alter these unless you know which parameter or topology file you don't want VMD to use.
 set var4 "${var3}\\par_all36m_prot.prm"
 set var5 "${var3}\\par_all36_na.prm"
@@ -45,14 +46,11 @@ set var35 "${var3}\\toppar_all36_label_fluorophore.str"
 
 
 
-
-#load the system with the psf in to VMD and psfgen
 resetpsf
-readpsf ${var45}.psf
-coordpdb ${var45}.pdb
+puts "loading molecule into VMD"
 mol load psf ${var45}.psf pdb ${var45}.pdb 
 set sel12 [molinfo top get id]
-
+puts "finished loading system into VMD"
 
 #prepare psfgen
 package require psfgen
@@ -99,6 +97,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb membpopetophead.pdb
 $head delete
+puts "created pdb file"
 
 set head [atomselect $sel12 "{segid MEMB and resname POPE} and \
 {name P or name N or name C11 or name C12 or name O11 or name O12 or name O13 or name O14} and z<0"]
@@ -106,6 +105,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb membpopebothead.pdb
 $head delete
+puts "created pdb file"
 
 set head [atomselect $sel12 "{segid MEMA and resname POPE} and \
 {name P or name N or name C11 or name C12 or name O11 or name O12 or name O13 or name O14} and z>0"]
@@ -113,6 +113,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb memapopetophead.pdb
 $head delete
+puts "created pdb file"
 
 set head [atomselect $sel12 "{segid MEMA and resname POPE} and \
 {name P or name N or name C11 or name C12 or name O11 or name O12 or name O13 or name O14} and z<0"]
@@ -120,6 +121,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb memapopebothead.pdb
 $head delete
+puts "created pdb file"
 
 #atomselection for the head groups of the POPC for the two different membranes
 set head [atomselect $sel12 "{segid MEMB and resname POPC} and \
@@ -129,6 +131,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb membpopctophead.pdb
 $head delete
+puts "created pdb file"
 
 set head [atomselect $sel12 "{segid MEMB and resname POPC} and \
 {name P or name N or name C11 or name C12 or name C13 or name C14 or name C15\
@@ -137,6 +140,7 @@ $all set beta 0
 $head set beta 1
 $all writepdb membpopcbothead.pdb
 $head delete
+puts "created pdb file"
 
 set head [atomselect $sel12 "{segid MEMA and resname POPC} and \
 {name P or name N or name C11 or name C12 or name C13 or name C14 or name C15\
@@ -145,13 +149,15 @@ $all set beta 0
 $head set beta 1
 $all writepdb memapopctophead.pdb
 $head delete
+puts "created pdb file"
 
-set head [atomselect $sel12 "{segid MEMB and resname POPC} and \
+set head [atomselect $sel12 "{segid MEMA and resname POPC} and \
 {name P or name N or name C11 or name C12 or name C13 or name C14 or name C15\
 or name O11 or name O12 or name O13 or name O14} and z<0"]
 $all set beta 0
 $head set beta 1
 $all writepdb memapopcbothead.pdb
 $head delete
-
+puts "created pdb file"
+puts "finished"
 return
