@@ -7,6 +7,6 @@ step5_assembly.str
 merged.psf
 merged.crd
 
-mghh_extrabonds are the same in pearl and tcl format. They use hextube_MGHH_WI.pdb. They are here because I was hoping to use them to create the dihe.txt file for use by NAMD colvars. But they are not understandable.
+mghh_extrabonds are the same in pearl and tcl format. They use hextube_MGHH_WI.pdb which is too larg of file to upload here. They are here because I was hoping to use them to create the dihe.txt file for use by NAMD colvars. But they are not understandable.
 
 selectHead.tcl will be used to select the head groupd of this particular double lipid bilayer system. POPE and POPC are the lipids involved.
