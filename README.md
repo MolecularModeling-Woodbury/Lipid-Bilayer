@@ -13,6 +13,7 @@ toppar.str
 step5_assembly.str
 merged.psf
 merged.crd
+toppar.str needs to be pointed at the toppar folder with the appropriate files in it.
 
 mghh_extrabonds are the same in pearl and tcl format. They use hextube_MGHH_WI.pdb which is too larg of file to upload here. They are here because I was hoping to use them to create the dihe.txt file for use by NAMD colvars. But they are not understandable.
 
