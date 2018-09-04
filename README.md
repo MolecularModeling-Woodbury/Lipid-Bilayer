@@ -8,12 +8,14 @@ The distances to move the parts of the systems were determined based on the orig
 The distances used to select the seperate leaflets were determined by trial and error using VMD and the graphical representation tool.
 If two other systems were used those selections would have to be verified and possibily changed for this script to work properly.
 
+Before membrane_lipid_restraint2.namd.str can be used write_charmm_crd.tcl is used to generate the merged.crd file. To use this file open up the TK console in VMD after you have your system loaded in to VMD and type "source write_charmm_crd.tcl"  "newfilename molid (usually 0) normal"
+
 membrane_lipid_restraint2.namd.str is to be used with:
 toppar.str
 step5_assembly.str
 merged.psf
 merged.crd
-toppar.str needs to be pointed at the toppar folder with the appropriate files in it. Also, a .crd file needs to be created using VMD. The script that does that is written by MG Leed (a former student of Dr. Busath) and can be found by google searching "write crd file VMD".
+toppar.str needs to be pointed at the toppar folder with the appropriate files in it. step5_assembly needs to be manually changed so that it contains the new system size "A B C" and new variables called "NLIPTOPMID" and "NLIPBOTMID" are added so that a lipid count of the other system is listed. No other variables need to be edited.
 
 mghh_extrabonds are the same in pearl and tcl format. They use hextube_MGHH_WI.pdb which is too larg of file to upload here. They are here because I was hoping to use them to create the dihe.txt file for use by NAMD colvars. But they are not understandable.
 
